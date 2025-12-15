@@ -1,0 +1,41 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+# --- ЭТОТ БЛОК ОБЯЗАТЕЛЕН ДЛЯ DEPLOY ---
+permissions:
+  contents: write
+# ---------------------------------------
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    # У вас пока нет тестов в репозитории, поэтому этот шаг можно временно закомментировать
+    # или оставить, если планируете добавить тесты прямо сейчас.
+    # - name: Run Unit Tests
+    #   run: npm test
+
+    - name: Build Project
+      run: npm run build
+
+    - name: Deploy to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        folder: dist

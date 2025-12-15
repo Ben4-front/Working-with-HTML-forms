@@ -1,6 +1,6 @@
 # Домашнее задание к занятию "5. Работа с HTML-формами"
 
-![Build status](https://github.com/Ben4-front/Working-with-HTML-forms/actions/workflows/web.yml/badge.svg)
+[![Build status](https://ci.appveyor.com/api/projects/status/9jvlktkyabgneud9?svg=true)](https://github.com/Ben4-front/Organization-of-testing/actions/workflows/web.yml/badge.svg)
 
 Правила сдачи задания:
 
