@@ -1,14 +1,36 @@
-// ---------- конфигурационный файл webpack: ----------
-const { merge } = require('webpack-merge'); // извлекаем функцию merge()
+const path = require('path');
+const HtmlWebPackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const commonConfig = require('./webpack.common.config');
-const productionConfig = require('./webpack.production.config');
-const developmentConfig = require('./webpack.development.config');
+module.exports = {
+  mode: 'development',
+  entry: './src/js/App.js', 
 
-module.exports = (env) => {
-  if (env.development) {
-    return merge(commonConfig, developmentConfig); // слияние 2ух конфигурационных файлов
-  }
-  entry: './src/js/App.js'
-  return merge(commonConfig, productionConfig); // слияние 2ух конфигурационных файлов
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].js',
+    clean: true,
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: { loader: 'babel-loader' },
+      },
+      {
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+      },
+    ],
+  },
+  plugins: [
+    new HtmlWebPackPlugin({
+      template: './src/index.html',
+      filename: './index.html',
+    }),
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+    }),
+  ],
 };
