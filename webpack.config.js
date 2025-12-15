@@ -9,5 +9,6 @@ module.exports = (env) => {
   if (env.development) {
     return merge(commonConfig, developmentConfig); // слияние 2ух конфигурационных файлов
   }
+  entry: './src/js/App.js'
   return merge(commonConfig, productionConfig); // слияние 2ух конфигурационных файлов
 };
