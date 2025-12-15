@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  padding: 50px;
+  background-color: #dedede;
+}
+
+button:focus,
+button:active {
+  outline: none;
+}
+
+.container {
+  display: flex;
+  margin: 0 auto;
+  padding: 250px 20px;
+}
+
+.hidden {
+  display: none;
+}
