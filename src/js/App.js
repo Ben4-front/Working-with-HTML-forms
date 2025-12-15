@@ -1,21 +1,28 @@
-import Button from '../components/button/Button';
-import Popover from '../components/popover/Popover';
+import Popover from './Popover';
+import '../css/style.css';
 
-export default class App {
-  constructor() {
-    this.container = document.querySelector('.container');
-    this.button = new Button();
-    this.popover = new Popover();
-  }
+document.addEventListener('DOMContentLoaded', () => {
+  // Инициализируем наш класс
+  const popoverFactory = new Popover();
 
-  init() {
-    this.container.append(this.button.element);
-    this.container.append(this.popover.element);
-    this.button.setEventClick(this.onBtnClick.bind(this));
-  }
+  // Ищем кнопку в HTML (а не импортируем класс Button)
+  const btn = document.querySelector('.btn');
+  let actualPopoverId = null;
 
-  onBtnClick(event) {
-    this.popover.changeVisibility();
-    this.popover.setPosition(event.target);
+  if (btn) {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      if (actualPopoverId !== null) {
+        popoverFactory.removePopover(actualPopoverId);
+        actualPopoverId = null;
+      } else {
+        const title = btn.getAttribute('title');
+        const content = btn.getAttribute('data-content');
+        actualPopoverId = popoverFactory.showPopover(content, title, btn);
+      }
+    });
+  } else {
+    console.log('Button not found');
   }
-}
+});
