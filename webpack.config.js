@@ -10,7 +10,7 @@ module.exports = {
     filename: 'main.js',
     // ВАЖНО: пустая строка делает пути относительными (src="main.js")
     // Это чинит 404 ошибку на GitHub Pages
-    publicPath: '', 
+    publicPath: 'auto', 
     clean: true,
   },
   module: {
