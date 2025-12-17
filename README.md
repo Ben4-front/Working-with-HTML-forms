@@ -1,5 +1,5 @@
 # Домашнее задание к занятию "5. Работа с HTML-формами"
-
+Ссылка на проект: https://ben4-front.github.io/Working-with-HTML-forms/
 ![Build status](https://github.com/Ben4-front/Working-with-HTML-forms/actions/workflows/web.yml/badge.svg)
 
 Правила сдачи задания:
